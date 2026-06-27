@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alex Carter — Product Designer</title>
+<meta name="description" content="Alex Carter — Senior Product Designer. Designing digital products that connect user needs with business growth. A bento-grid operating system for a design career." />
+
+<!-- ============================================================= -->
+<!-- EDIT ME: Everything between the markers below is yours to change -->
+<!-- Name, role, links, projects, copy, numbers. Search "EDIT ME".   -->
+<!-- Images: replace the .placeholder blocks with <img> tags.        -->
+<!-- ============================================================= -->
+
+<!-- Open Graph -->
+<meta property="og:title" content="Alex Carter — Product Designer" />
+<meta property="og:description" content="An operating system for a design career." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts: Clash Display + General Sans (Fontshare), JetBrains Mono (Google) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Clash Display"', 'sans-serif'],
+          sans: ['"General Sans"', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          accent: { DEFAULT: '#4338FF', glow: '#7B74FF' },
+          amber: { signal: '#FFB020' },
+        },
+        borderRadius: { panel: '24px', tile: '20px' },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root {
+    /* Light theme neutrals */
+    --bg: #F4F4F1;
+    --surface: #FFFFFF;
+    --surface-2: #FAFAF8;
+    --ink: #0E0E12;
+    --muted: #66666E;
+    --hairline: #E5E5E0;
+    --accent: #4338FF;
+    --accent-glow: #7B74FF;
+    --shadow: 0 1px 2px rgba(14,14,18,.04), 0 8px 24px -12px rgba(14,14,18,.12);
+    --shadow-lift: 0 2px 4px rgba(14,14,18,.06), 0 24px 48px -20px rgba(67,56,255,.28);
+  }
+  html.dark {
+    --bg: #08080A;
+    --surface: #141418;
+    --surface-2: #0F0F13;
+    --ink: #F4F4F2;
+    --muted: #9A9AA2;
+    --hairline: #26262C;
+    --accent: #6E66FF;
+    --accent-glow: #8A82FF;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.6);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.5), 0 28px 56px -20px rgba(110,102,255,.4);
+  }
+
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-feature-settings: "ss01","cv01";
+    transition: background .5s ease, color .5s ease;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* Ambient animated gradient field behind the page */
+  .ambient {
+    position: fixed; inset: 0; z-index: -2; overflow: hidden; pointer-events: none;
+  }
+  .ambient::before, .ambient::after {
+    content: ""; position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%;
+    filter: blur(80px); opacity: .5; will-change: transform;
+  }
+  .ambient::before {
+    background: radial-gradient(circle at center, var(--accent-glow), transparent 60%);
+    top: -20vmax; left: -10vmax; animation: drift1 26s ease-in-out infinite alternate;
+  }
+  .ambient::after {
+    background: radial-gradient(circle at center, var(--accent), transparent 60%);
+    bottom: -25vmax; right: -15vmax; opacity: .35; animation: drift2 32s ease-in-out infinite alternate;
+  }
+  @keyframes drift1 { from { transform: translate(0,0) scale(1);} to { transform: translate(8vmax,6vmax) scale(1.15);} }
+  @keyframes drift2 { from { transform: translate(0,0) scale(1);} to { transform: translate(-10vmax,-4vmax) scale(1.2);} }
+
+  /* Grain */
+  .grain::after{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Panels / tiles */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s cubic-bezier(.2,.8,.2,1), border-color .4s;
+    position: relative; overflow: hidden;
+  }
+  .tile-hover { transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, border-color .4s; }
+  .tile-hover:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); border-color: color-mix(in srgb, var(--accent) 40%, var(--hairline)); }
+
+  .label {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .hairline { border-color: var(--hairline); }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Spotlight cursor */
+  #spot { position: fixed; top:0; left:0; width: 480px; height: 480px; margin:-240px 0 0 -240px; z-index:-1; pointer-events:none;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-glow) 26%, transparent), transparent 60%);
+    opacity: 0; transition: opacity .4s; will-change: transform; }
+  @media (hover:hover){ body:hover #spot { opacity: 1; } }
+
+  /* Chips */
+  .chip { background: var(--surface-2); border:1px solid var(--hairline); border-radius: 999px;
+    transition: all .25s; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* Buttons */
+  .btn { border-radius: 14px; transition: transform .2s, box-shadow .3s, background .3s, color .3s, border-color .3s; will-change: transform; }
+  .btn-primary { background: var(--accent); color:#fff; }
+  .btn-primary:hover { box-shadow: 0 12px 28px -8px var(--accent); }
+  .btn-ghost { border:1px solid var(--hairline); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Project thumb placeholder mesh */
+  .mesh { background:
+      radial-gradient(at 20% 20%, var(--accent-glow), transparent 50%),
+      radial-gradient(at 80% 30%, #ff7ac6, transparent 55%),
+      radial-gradient(at 60% 90%, var(--accent), transparent 55%),
+      var(--surface-2);
+  }
+  .mesh-2 { background:
+      radial-gradient(at 80% 20%, #2bd4c4, transparent 55%),
+      radial-gradient(at 10% 70%, var(--accent), transparent 55%),
+      radial-gradient(at 60% 100%, #ffb020, transparent 50%),
+      var(--surface-2);
+  }
+  .mesh-3 { background:
+      radial-gradient(at 10% 10%, #ffb020, transparent 50%),
+      radial-gradient(at 90% 60%, var(--accent-glow), transparent 55%),
+      radial-gradient(at 40% 90%, #ff5b8a, transparent 55%),
+      var(--surface-2);
+  }
+
+  .overlay { opacity:0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+  .group:hover .overlay { opacity:1; transform:none; }
+
+  /* Process connectors */
+  .flow-line { background: linear-gradient(90deg, var(--accent), transparent); }
+
+  /* Marquee toolbox */
+  @keyframes marquee { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+  .marquee { animation: marquee 28s linear infinite; }
+  .marquee-track:hover .marquee { animation-play-state: paused; }
+
+  /* Carousel */
+  .track { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+
+  /* Header blur */
+  .glass { backdrop-filter: blur(16px); background: color-mix(in srgb, var(--bg) 72%, transparent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, .ambient::before, .ambient::after, .marquee { animation: none !important; transition: none !important; }
+    .reveal { opacity:1 !important; transform:none !important; }
+  }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+</style>
+</head>
+
+<body class="font-sans antialiased grain">
+<div class="ambient" aria-hidden="true"></div>
+<div id="spot" aria-hidden="true"></div>
+
+<!-- ===================== HEADER / COMMAND BAR ===================== -->
+<header class="fixed top-0 inset-x-0 z-50 glass border-b hairline">
+  <div class="max-w-[1320px] mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-2.5 group/logo">
+      <span class="w-8 h-8 rounded-lg grid place-items-center text-white font-display font-semibold text-sm" style="background:var(--accent)">A</span>
+      <span class="font-display font-semibold tracking-tight text-[15px]">Alex&nbsp;Carter</span>
+      <span class="label hidden sm:inline ml-1">v2026</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1 label">
+      <a href="#work" class="px-3 py-2 rounded-lg hover:text-[color:var(--ink)] transition">Work</a>
+      <a href="#about" class="px-3 py-2 rounded-lg hover:text-[color:var(--ink)] transition">About</a>
+      <a href="#process" class="px-3 py-2 rounded-lg hover:text-[color:var(--ink)] transition">Process</a>
+      <a href="#contact" class="px-3 py-2 rounded-lg hover:text-[color:var(--ink)] transition">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button id="cmd-open" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl border hairline text-[color:var(--muted)] hover:border-[color:var(--accent)] transition label" aria-label="Open command menu">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        Search <kbd class="ml-1 px-1.5 py-0.5 rounded bg-[color:var(--surface-2)] border hairline text-[10px]">⌘K</kbd>
+      </button>
+      <button id="theme-toggle" class="w-10 h-10 grid place-items-center rounded-xl border hairline hover:border-[color:var(--accent)] transition" aria-label="Toggle color theme">
+        <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun hidden" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="#contact" class="hidden sm:inline-flex btn btn-primary px-4 py-2.5 text-sm font-medium magnetic">Let's talk</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== COMMAND PALETTE ===================== -->
+<div id="cmd" class="fixed inset-0 z-[60] hidden items-start justify-center pt-[14vh] px-4" role="dialog" aria-modal="true" aria-label="Command menu">
+  <div id="cmd-backdrop" class="absolute inset-0" style="background:color-mix(in srgb,var(--bg) 50%,transparent);backdrop-filter:blur(8px)"></div>
+  <div class="panel relative w-full max-w-lg p-2.5" style="border-radius:20px">
+    <div class="flex items-center gap-3 px-3 py-2 border-b hairline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="cmd-input" type="text" placeholder="Jump to a section…" class="flex-1 bg-transparent outline-none text-[15px] placeholder:text-[color:var(--muted)]" />
+      <kbd class="label px-1.5 py-0.5 rounded bg-[color:var(--surface-2)] border hairline">ESC</kbd>
+    </div>
+    <ul id="cmd-list" class="py-2 max-h-72 overflow-auto"></ul>
+  </div>
+</div>
+
+<main id="top" class="max-w-[1320px] mx-auto px-5 sm:px-8 pt-24 sm:pt-28">
+
+  <!-- ===================== HERO BENTO CLUSTER ===================== -->
+  <section class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 sm:gap-5" aria-label="Introduction">
+
+    <!-- Hero (big) -->
+    <div class="panel tile-hover reveal md:col-span-6 lg:col-span-8 lg:row-span-2 p-7 sm:p-10 flex flex-col justify-between min-h-[420px] lg:min-h-[520px]">
+      <div class="flex items-center justify-between">
+        <span class="label flex items-center gap-2"><span class="w-2 h-2 rounded-full" style="background:#1ec98b;box-shadow:0 0 0 3px color-mix(in srgb,#1ec98b 25%,transparent)"></span>Open to senior &amp; lead roles</span>
+        <span class="label hidden sm:block">Lagos · Remote · GMT+1</span>
+      </div>
+
+      <div class="mt-8">
+        <p class="label mb-4">Product Designer · Systems Builder</p>
+        <h1 class="font-display font-semibold leading-[0.95] tracking-tight text-[clamp(2.6rem,6.5vw,5.4rem)]">
+          Alex Carter
+        </h1>
+        <p class="mt-5 max-w-xl text-[clamp(1.05rem,2vw,1.35rem)] leading-snug text-[color:var(--muted)]">
+          I design digital products that connect <span class="text-[color:var(--ink)]">user needs</span> with <span class="text-[color:var(--ink)]">business growth</span> — from first sketch to shipped system.
+        </p>
+      </div>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="#work" class="btn btn-primary px-5 py-3 text-sm font-medium magnetic">View portfolio</a>
+        <a href="#" id="resume-btn" class="btn btn-ghost px-5 py-3 text-sm font-medium magnetic">Resume ↓</a>
+        <a href="#contact" class="btn btn-ghost px-5 py-3 text-sm font-medium magnetic">Contact</a>
+      </div>
+    </div>
+
+    <!-- Portrait -->
+    <div class="panel tile-hover reveal md:col-span-3 lg:col-span-4 overflow-hidden min-h-[220px] lg:row-span-1 relative group">
+      <!-- EDIT ME: replace this placeholder with <img src="portrait.jpg" class="w-full h-full object-cover" alt="Alex Carter portrait"> -->
+      <div class="placeholder mesh w-full h-full min-h-[220px] grid place-items-center">
+        <div class="text-center">
+          <div class="font-display text-6xl font-semibold text-white/90 drop-shadow">AC</div>
+          <div class="label text-white/70 mt-2">portrait.jpg</div>
+        </div>
+      </div>
+      <div class="absolute bottom-3 left-3 label glass px-2.5 py-1 rounded-lg">Currently in Lagos</div>
+    </div>
+
+    <!-- About snippets -->
+    <div id="about" class="panel tile-hover reveal md:col-span-3 lg:col-span-4 p-6 lg:row-span-1">
+      <p class="label mb-4">// who_i_am</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="chip px-3 py-1.5 text-sm font-medium">Product Designer</span>
+        <span class="chip px-3 py-1.5 text-sm font-medium">UX Thinker</span>
+        <span class="chip px-3 py-1.5 text-sm font-medium">Brand Strategist</span>
+        <span class="chip px-3 py-1.5 text-sm font-medium">Problem Solver</span>
+        <span class="chip px-3 py-1.5 text-sm font-medium">Systems Builder</span>
+      </div>
+      <p class="mt-5 text-sm leading-relaxed text-[color:var(--muted)]">
+        Eight years turning fuzzy problems into products people trust. I work end-to-end: research, strategy, interface, and the design systems that hold it all together.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== METRICS ===================== -->
+  <section class="mt-4 sm:mt-5 grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5" aria-label="Achievements">
+    <div class="panel tile-hover reveal p-6"><div class="font-display text-4xl sm:text-5xl font-semibold" data-count="25" data-suffix="+">0</div><p class="label mt-2">Products shipped</p></div>
+    <div class="panel tile-hover reveal p-6"><div class="font-display text-4xl sm:text-5xl font-semibold" data-count="50" data-suffix="+">0</div><p class="label mt-2">UI screens</p></div>
+    <div class="panel tile-hover reveal p-6"><div class="font-display text-4xl sm:text-5xl font-semibold" data-count="100" data-suffix="+">0</div><p class="label mt-2">Branding assets</p></div>
+    <div class="panel tile-hover reveal p-6"><div class="font-display text-4xl sm:text-5xl font-semibold" data-count="8" data-suffix="+">0</div><p class="label mt-2">Years experience</p></div>
+    <div class="panel tile-hover reveal p-6 col-span-2 lg:col-span-1"><div class="font-display text-4xl sm:text-5xl font-semibold" data-count="15">0</div><p class="label mt-2">Happy clients</p></div>
+  </section>
+
+  <!-- ===================== FEATURED WORK ===================== -->
+  <section id="work" class="mt-20 sm:mt-28" aria-label="Featured projects">
+    <div class="flex items-end justify-between gap-4 mb-7 reveal">
+      <div>
+        <p class="label mb-2">// selected_work</p>
+        <h2 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight">Featured projects</h2>
+      </div>
+      <span class="label hidden sm:block">03 case studies</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 sm:gap-5">
+      <!-- Project 1 (wide) -->
+      <article class="panel tile-hover reveal md:col-span-6 lg:col-span-7 group overflow-hidden">
+        <div class="relative mesh h-56 sm:h-72 grid place-items-center overflow-hidden">
+          <span class="label text-white/70">owiwi-thumbnail.jpg</span>
+          <div class="overlay absolute inset-0 grid place-items-center" style="background:color-mix(in srgb,var(--accent) 78%,transparent)">
+            <a href="#" class="btn bg-white text-[color:var(--accent)] px-5 py-2.5 text-sm font-semibold">Read case study →</a>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 label mb-3">
+            <span>Fintech</span><span>·</span><span>Lead Product Designer</span><span>·</span><span>2024</span>
+          </div>
+          <h3 class="font-display text-2xl font-semibold tracking-tight">Owiwi — lending, reimagined</h3>
+          <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Rebuilt a consumer lending flow around trust and clarity. Approval time dropped and drop-off fell sharply after a ground-up redesign of the onboarding system.</p>
+        </div>
+      </article>
+
+      <!-- Project 2 (tall) -->
+      <article class="panel tile-hover reveal md:col-span-3 lg:col-span-5 group overflow-hidden">
+        <div class="relative mesh-2 h-56 sm:h-72 grid place-items-center overflow-hidden">
+          <span class="label text-white/70">agrichain-thumbnail.jpg</span>
+          <div class="overlay absolute inset-0 grid place-items-center" style="background:color-mix(in srgb,var(--accent) 78%,transparent)">
+            <a href="#" class="btn bg-white text-[color:var(--accent)] px-5 py-2.5 text-sm font-semibold">Read case study →</a>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 label mb-3">
+            <span>Supply chain</span><span>·</span><span>Product Designer</span><span>·</span><span>2023</span>
+          </div>
+          <h3 class="font-display text-2xl font-semibold tracking-tight">Agrichain — farm to ledger</h3>
+          <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">A traceability platform connecting smallholder farmers to buyers, designed for low-bandwidth devices and first-time digital users.</p>
+        </div>
+      </article>
+
+      <!-- Project 3 (medium) -->
+      <article class="panel tile-hover reveal md:col-span-3 lg:col-span-5 group overflow-hidden">
+        <div class="relative mesh-3 h-48 grid place-items-center overflow-hidden">
+          <span class="label text-white/70">arc-thumbnail.jpg</span>
+          <div class="overlay absolute inset-0 grid place-items-center" style="background:color-mix(in srgb,var(--accent) 78%,transparent)">
+            <a href="#" class="btn bg-white text-[color:var(--accent)] px-5 py-2.5 text-sm font-semibold">Read case study →</a>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 label mb-3"><span>SaaS</span><span>·</span><span>Design Systems</span><span>·</span><span>2022</span></div>
+          <h3 class="font-display text-2xl font-semibold tracking-tight">Arc — a design system at scale</h3>
+          <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">120+ components, full theming, and docs that designers and engineers actually use.</p>
+        </div>
+      </article>
+
+      <!-- Philosophy quote tile sits beside project 3 -->
+      <div class="panel reveal md:col-span-6 lg:col-span-7 p-8 sm:p-10 flex flex-col justify-center" style="background:var(--accent)">
+        <p class="label" style="color:rgba(255,255,255,.7)">// design_philosophy</p>
+        <blockquote class="mt-4 font-display text-2xl sm:text-3xl leading-tight font-medium text-white">
+          “Good design isn't decoration. It's decision-making made visible.”
+        </blockquote>
+        <p class="mt-4 text-white/70 text-sm">Every pixel is an argument about what matters most.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE + PROCESS ===================== -->
+  <section id="process" class="mt-20 sm:mt-28 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5" aria-label="Experience and process">
+
+    <!-- Experience timeline -->
+    <div class="panel reveal lg:col-span-7 p-7 sm:p-9">
+      <p class="label mb-2">// experience</p>
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight mb-6">Where I've built</h2>
+
+      <div id="timeline" class="space-y-1">
+        <!-- item -->
+        <div class="timeline-item group border-b hairline last:border-0">
+          <button class="w-full text-left py-4 flex items-start gap-4" aria-expanded="false">
+            <span class="label pt-1 w-20 shrink-0">2022—Now</span>
+            <span class="flex-1">
+              <span class="block font-display text-lg font-medium">Lead Product Designer</span>
+              <span class="block text-sm text-[color:var(--muted)]">Northwind Labs</span>
+            </span>
+            <span class="caret pt-1 text-[color:var(--muted)] transition-transform">+</span>
+          </button>
+          <div class="detail grid grid-rows-[0fr] transition-all duration-500">
+            <div class="overflow-hidden"><p class="pb-4 pr-4 text-sm leading-relaxed text-[color:var(--muted)]">Lead designer across two product lines. Built the Arc design system, mentored three designers, and partnered with PM/eng on quarterly strategy.</p></div>
+          </div>
+        </div>
+        <div class="timeline-item group border-b hairline last:border-0">
+          <button class="w-full text-left py-4 flex items-start gap-4" aria-expanded="false">
+            <span class="label pt-1 w-20 shrink-0">2020—22</span>
+            <span class="flex-1"><span class="block font-display text-lg font-medium">Senior Product Designer</span><span class="block text-sm text-[color:var(--muted)]">Owiwi</span></span>
+            <span class="caret pt-1 text-[color:var(--muted)] transition-transform">+</span>
+          </button>
+          <div class="detail grid grid-rows-[0fr] transition-all duration-500"><div class="overflow-hidden"><p class="pb-4 pr-4 text-sm leading-relaxed text-[color:var(--muted)]">Owned the lending experience end-to-end. Ran research, prototyped flows, and shipped the onboarding redesign that lifted conversion.</p></div></div>
+        </div>
+        <div class="timeline-item group border-b hairline last:border-0">
+          <button class="w-full text-left py-4 flex items-start gap-4" aria-expanded="false">
+            <span class="label pt-1 w-20 shrink-0">2018—20</span>
+            <span class="flex-1"><span class="block font-display text-lg font-medium">Product Designer</span><span class="block text-sm text-[color:var(--muted)]">Agrichain</span></span>
+            <span class="caret pt-1 text-[color:var(--muted)] transition-transform">+</span>
+          </button>
+          <div class="detail grid grid-rows-[0fr] transition-all duration-500"><div class="overflow-hidden"><p class="pb-4 pr-4 text-sm leading-relaxed text-[color:var(--muted)]">Designed for low-bandwidth, first-time digital users. Learned to make complex supply-chain data feel simple.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process flow -->
+    <div class="panel reveal lg:col-span-5 p-7 sm:p-9">
+      <p class="label mb-2">// how_i_work</p>
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold tracking-tight mb-6">The process</h2>
+      <ol class="relative space-y-0">
+        <!-- steps with animated connector -->
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">01</span><span class="font-medium">Discover</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">02</span><span class="font-medium">Research</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">03</span><span class="font-medium">Strategy</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">04</span><span class="font-medium">Wireframe</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">05</span><span class="font-medium">Prototype</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">06</span><span class="font-medium">Test</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium" style="background:var(--surface-2);border:1px solid var(--hairline)">07</span><span class="font-medium">Iterate</span><span class="flow-line h-px flex-1 origin-left scale-x-0 transition-transform duration-700"></span></li>
+        <li class="flow-step flex items-center gap-4 py-2.5"><span class="w-7 h-7 shrink-0 grid place-items-center rounded-full text-[11px] font-mono font-medium text-white" style="background:var(--accent)">08</span><span class="font-medium">Launch</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section class="mt-20 sm:mt-28" aria-label="Skills">
+    <div class="mb-7 reveal">
+      <p class="label mb-2">// capabilities</p>
+      <h2 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight">What I bring</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      <div class="panel tile-hover reveal p-6">
+        <p class="label mb-4">Craft</p>
+        <div class="flex flex-wrap gap-2" data-chips>
+          <span class="chip px-3 py-1.5 text-sm">Product Design</span><span class="chip px-3 py-1.5 text-sm">UI Design</span><span class="chip px-3 py-1.5 text-sm">Interaction Design</span><span class="chip px-3 py-1.5 text-sm">Wireframing</span><span class="chip px-3 py-1.5 text-sm">Prototyping</span><span class="chip px-3 py-1.5 text-sm">Design Systems</span>
+        </div>
+      </div>
+      <div class="panel tile-hover reveal p-6">
+        <p class="label mb-4">Thinking</p>
+        <div class="flex flex-wrap gap-2" data-chips>
+          <span class="chip px-3 py-1.5 text-sm">UX Research</span><span class="chip px-3 py-1.5 text-sm">User Testing</span><span class="chip px-3 py-1.5 text-sm">Branding</span><span class="chip px-3 py-1.5 text-sm">Accessibility</span><span class="chip px-3 py-1.5 text-sm">Strategy</span>
+        </div>
+      </div>
+      <div class="panel tile-hover reveal p-6">
+        <p class="label mb-4">Tools</p>
+        <div class="flex flex-wrap gap-2" data-chips>
+          <span class="chip px-3 py-1.5 text-sm">Figma</span><span class="chip px-3 py-1.5 text-sm">Framer</span><span class="chip px-3 py-1.5 text-sm">Adobe CC</span><span class="chip px-3 py-1.5 text-sm">HTML</span><span class="chip px-3 py-1.5 text-sm">CSS</span><span class="chip px-3 py-1.5 text-sm">AI Tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="mt-20 sm:mt-28" aria-label="Testimonials">
+    <div class="flex items-end justify-between mb-7 reveal">
+      <div><p class="label mb-2">// kind_words</p><h2 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight">Testimonials</h2></div>
+      <div class="flex gap-2">
+        <button id="t-prev" class="w-10 h-10 grid place-items-center rounded-xl border hairline hover:border-[color:var(--accent)] transition" aria-label="Previous testimonial">←</button>
+        <button id="t-next" class="w-10 h-10 grid place-items-center rounded-xl border hairline hover:border-[color:var(--accent)] transition" aria-label="Next testimonial">→</button>
+      </div>
+    </div>
+
+    <div class="overflow-hidden reveal">
+      <div id="t-track" class="track flex">
+        <!-- slide -->
+        <figure class="w-full shrink-0 px-1">
+          <div class="panel glass p-8 sm:p-10">
+            <blockquote class="font-display text-xl sm:text-2xl leading-snug font-medium">“Alex sees the whole system. They turned a tangled product into something our users describe as 'obvious' — the highest compliment in design.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-4">
+              <span class="w-11 h-11 rounded-full mesh"></span>
+              <span><span class="block font-medium">Maya Obi</span><span class="label">VP Product · Northwind Labs</span></span>
+            </figcaption>
+          </div>
+        </figure>
+        <figure class="w-full shrink-0 px-1">
+          <div class="panel glass p-8 sm:p-10">
+            <blockquote class="font-display text-xl sm:text-2xl leading-snug font-medium">“Rare blend of taste and rigor. Ships beautiful work and can defend every decision with data.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-4">
+              <span class="w-11 h-11 rounded-full mesh-2"></span>
+              <span><span class="block font-medium">David Eze</span><span class="label">Founder · Owiwi</span></span>
+            </figcaption>
+          </div>
+        </figure>
+        <figure class="w-full shrink-0 px-1">
+          <div class="panel glass p-8 sm:p-10">
+            <blockquote class="font-display text-xl sm:text-2xl leading-snug font-medium">“Our design system finally feels like infrastructure instead of a pile of components. That's Alex.”</blockquote>
+            <figcaption class="mt-6 flex items-center gap-4">
+              <span class="w-11 h-11 rounded-full mesh-3"></span>
+              <span><span class="block font-medium">Lara Sun</span><span class="label">Eng Lead · Agrichain</span></span>
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </div>
+    <div id="t-dots" class="flex justify-center gap-2 mt-5"></div>
+  </section>
+
+  <!-- ===================== CURRENTLY BUILDING + FUN FACTS + BLOG ===================== -->
+  <section class="mt-20 sm:mt-28 grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 sm:gap-5" aria-label="Now and beyond">
+
+    <!-- Currently building -->
+    <div class="panel reveal md:col-span-6 lg:col-span-5 p-7 sm:p-8">
+      <p class="label mb-5">// currently_building</p>
+      <ul class="space-y-3">
+        <li class="flex items-center justify-between gap-4 p-4 rounded-2xl" style="background:var(--surface-2)">
+          <span><span class="block font-display text-lg font-medium">Owiwi</span><span class="text-sm text-[color:var(--muted)]">Consumer lending platform</span></span>
+          <span class="label px-2.5 py-1 rounded-full" style="background:color-mix(in srgb,var(--amber-signal) 18%,transparent);color:var(--amber-signal)">In progress</span>
+        </li>
+        <li class="flex items-center justify-between gap-4 p-4 rounded-2xl" style="background:var(--surface-2)">
+          <span><span class="block font-display text-lg font-medium">Agrichain</span><span class="text-sm text-[color:var(--muted)]">Supply-chain traceability</span></span>
+          <span class="label px-2.5 py-1 rounded-full" style="background:color-mix(in srgb,var(--amber-signal) 18%,transparent);color:var(--amber-signal)">In progress</span>
+        </li>
+        <li class="flex items-center justify-between gap-4 p-4 rounded-2xl" style="background:var(--surface-2)">
+          <span><span class="block font-display text-lg font-medium">Personal experiments</span><span class="text-sm text-[color:var(--muted)]">AI-native design tools</span></span>
+          <span class="label px-2.5 py-1 rounded-full" style="background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)">Tinkering</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Fun facts -->
+    <div class="md:col-span-6 lg:col-span-4 grid grid-cols-2 gap-4 sm:gap-5 content-start">
+      <div class="panel tile-hover reveal p-5"><div class="text-3xl mb-2">☕</div><p class="text-sm font-medium">Coffee lover</p></div>
+      <div class="panel tile-hover reveal p-5"><div class="text-3xl mb-2">🎧</div><p class="text-sm font-medium">Deep-work playlists</p></div>
+      <div class="panel tile-hover reveal p-5"><div class="text-3xl mb-2">📚</div><p class="text-sm font-medium">Always reading</p></div>
+      <div class="panel tile-hover reveal p-5"><div class="text-3xl mb-2">🚀</div><p class="text-sm font-medium">Building AI products</p></div>
+    </div>
+
+    <!-- Blog -->
+    <div class="panel reveal md:col-span-6 lg:col-span-3 p-7 sm:p-8">
+      <p class="label mb-5">// writing</p>
+      <ul class="space-y-4">
+        <li><a href="#" class="group block"><span class="label">Essay · 2025</span><span class="block font-medium mt-1 group-hover:text-[color:var(--accent)] transition">Designing for trust in fintech</span></a></li>
+        <li class="border-t hairline pt-4"><a href="#" class="group block"><span class="label">Notes · 2025</span><span class="block font-medium mt-1 group-hover:text-[color:var(--accent)] transition">Design systems as infrastructure</span></a></li>
+        <li class="border-t hairline pt-4"><a href="#" class="group block"><span class="label">Essay · 2024</span><span class="block font-medium mt-1 group-hover:text-[color:var(--accent)] transition">What AI changes about UX</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== TOOLBOX MARQUEE ===================== -->
+  <section class="mt-20 sm:mt-28 reveal" aria-label="Toolbox">
+    <p class="label mb-5">// toolbox</p>
+    <div class="panel py-8 overflow-hidden marquee-track">
+      <div class="flex w-max marquee gap-4 px-4">
+        <!-- duplicated track for seamless loop -->
+        <div class="flex gap-4" data-tools>
+          <span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Figma</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Framer</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Adobe CC</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Notion</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Webflow</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Protopie</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Maze</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Linear</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">After Effects</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">AI Tools</span>
+        </div>
+        <div class="flex gap-4" aria-hidden="true">
+          <span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Figma</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Framer</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Adobe CC</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Notion</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Webflow</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Protopie</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Maze</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">Linear</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">After Effects</span><span class="chip px-5 py-3 text-base font-medium whitespace-nowrap">AI Tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="mt-20 sm:mt-28" aria-label="Contact">
+    <div class="panel reveal p-7 sm:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="flex flex-col justify-between">
+        <div>
+          <p class="label mb-3">// let's_build_something</p>
+          <h2 class="font-display text-3xl sm:text-5xl font-semibold tracking-tight leading-[0.98]">Have a product worth designing?</h2>
+          <p class="mt-4 text-[color:var(--muted)] max-w-md leading-relaxed">Tell me what you're building. I reply to every serious message within two working days.</p>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          <!-- EDIT ME: real links -->
+          <a href="mailto:hello@alexcarter.design" class="chip px-4 py-2.5 text-sm font-medium">Email</a>
+          <a href="#" class="chip px-4 py-2.5 text-sm font-medium">LinkedIn</a>
+          <a href="#" class="chip px-4 py-2.5 text-sm font-medium">Behance</a>
+          <a href="#" class="chip px-4 py-2.5 text-sm font-medium">Dribbble</a>
+          <a href="#" class="chip px-4 py-2.5 text-sm font-medium">GitHub</a>
+          <a href="#" class="chip px-4 py-2.5 text-sm font-medium">Book a call ↗</a>
+        </div>
+      </div>
+
+      <!-- Netlify-ready form. Works automatically once deployed on Netlify. -->
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Don't fill this: <input name="bot-field" /></label></p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block"><span class="label block mb-2">Name</span><input name="name" required class="w-full bg-[color:var(--surface-2)] border hairline rounded-xl px-4 py-3 outline-none focus:border-[color:var(--accent)] transition" placeholder="Your name" /></label>
+          <label class="block"><span class="label block mb-2">Email</span><input name="email" type="email" required class="w-full bg-[color:var(--surface-2)] border hairline rounded-xl px-4 py-3 outline-none focus:border-[color:var(--accent)] transition" placeholder="you@company.com" /></label>
+        </div>
+        <label class="block"><span class="label block mb-2">Project</span><textarea name="message" rows="4" required class="w-full bg-[color:var(--surface-2)] border hairline rounded-xl px-4 py-3 outline-none focus:border-[color:var(--accent)] transition resize-none" placeholder="What are you building, and what do you need?"></textarea></label>
+        <button type="submit" class="btn btn-primary w-full py-3.5 font-medium magnetic">Send message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="mt-16 sm:mt-24 mb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[color:var(--muted)]">
+    <p class="label">© 2026 Alex Carter — designed &amp; built end-to-end</p>
+    <a href="#top" class="label hover:text-[color:var(--ink)] transition">Back to top ↑</a>
+  </footer>
+</main>
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+
+  /* ---------- Theme ---------- */
+  const stored = localStorage.getItem('theme');
+  if (stored) root.classList.toggle('dark', stored === 'dark');
+  const syncIcons = () => {
+    const dark = root.classList.contains('dark');
+    document.querySelector('.moon').classList.toggle('hidden', !dark);
+    document.querySelector('.sun').classList.toggle('hidden', dark);
+  };
+  syncIcons();
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    syncIcons();
+  });
+
+  /* ---------- Scroll reveal (staggered) ---------- */
+  const reveals = document.querySelectorAll('.reveal');
+  if (reduce) { reveals.forEach(r => r.classList.add('in')); }
+  else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          const sibs = Array.from(e.target.parentElement.children).filter(c => c.classList.contains('reveal'));
+          const idx = sibs.indexOf(e.target);
+          e.target.style.transitionDelay = Math.min(idx, 6) * 70 + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(r => io.observe(r));
+  }
+
+  /* ---------- Counters ---------- */
+  const counters = document.querySelectorAll('[data-count]');
+  const cIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.count, suffix = el.dataset.suffix || '';
+      if (reduce) { el.textContent = target + suffix; cIO.unobserve(el); return; }
+      const dur = 1400, t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      cIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => cIO.observe(c));
+
+  /* ---------- Process connectors ---------- */
+  const steps = document.querySelectorAll('.flow-step .flow-line');
+  const sIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      steps.forEach((line, i) => setTimeout(() => line.style.transform = 'scaleX(1)', reduce ? 0 : i * 120));
+      sIO.disconnect();
+    });
+  }, { threshold: 0.4 });
+  if (steps.length) sIO.observe(steps[0].closest('ol'));
+
+  /* ---------- Timeline expand ---------- */
+  document.querySelectorAll('.timeline-item button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.timeline-item');
+      const detail = item.querySelector('.detail');
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      detail.style.gridTemplateRows = open ? '0fr' : '1fr';
+      btn.querySelector('.caret').style.transform = open ? 'rotate(0deg)' : 'rotate(45deg)';
+    });
+  });
+
+  /* ---------- Testimonial carousel ---------- */
+  const track = document.getElementById('t-track');
+  const slides = track ? track.children.length : 0;
+  let idx = 0, timer;
+  const dotsWrap = document.getElementById('t-dots');
+  for (let i = 0; i < slides; i++) {
+    const d = document.createElement('button');
+    d.className = 'w-2.5 h-2.5 rounded-full transition';
+    d.style.background = i === 0 ? 'var(--accent)' : 'var(--hairline)';
+    d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  }
+  function go(n){
+    idx = (n + slides) % slides;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    [...dotsWrap.children].forEach((d, i) => d.style.background = i === idx ? 'var(--accent)' : 'var(--hairline)');
+    restart();
+  }
+  function restart(){ if (reduce) return; clearInterval(timer); timer = setInterval(() => go(idx + 1), 6000); }
+  document.getElementById('t-next')?.addEventListener('click', () => go(idx + 1));
+  document.getElementById('t-prev')?.addEventListener('click', () => go(idx - 1));
+  if (slides) restart();
+
+  /* ---------- Spotlight cursor + magnetic buttons ---------- */
+  if (!reduce && window.matchMedia('(hover:hover)').matches) {
+    const spot = document.getElementById('spot');
+    let mx = innerWidth/2, my = innerHeight/2, sx = mx, sy = my;
+    addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop(){
+      sx += (mx - sx) * 0.12; sy += (my - sy) * 0.12;
+      spot.style.transform = `translate(${sx}px,${sy}px)`;
+      requestAnimationFrame(loop);
+    })();
+
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2;
+        const y = e.clientY - r.top - r.height/2;
+        el.style.transform = `translate(${x*0.25}px,${y*0.3}px)`;
+      });
+      el.addEventListener('mouseleave', () => el.style.transform = '');
+    });
+  }
+
+  /* ---------- Command palette ---------- */
+  const cmd = document.getElementById('cmd');
+  const cmdInput = document.getElementById('cmd-input');
+  const cmdList = document.getElementById('cmd-list');
+  const items = [
+    {label:'Featured work', hash:'#work'}, {label:'About', hash:'#about'},
+    {label:'Process', hash:'#process'}, {label:'Testimonials', hash:'#contact'},
+    {label:'Contact', hash:'#contact'}, {label:'Top', hash:'#top'},
+  ];
+  function renderCmd(q=''){
+    cmdList.innerHTML='';
+    items.filter(i => i.label.toLowerCase().includes(q.toLowerCase())).forEach(i => {
+      const li = document.createElement('li');
+      li.innerHTML = `<button class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-[color:var(--surface-2)] transition flex items-center justify-between"><span>${i.label}</span><span class="label">↵</span></button>`;
+      li.querySelector('button').addEventListener('click', () => { location.hash = i.hash; closeCmd(); });
+      cmdList.appendChild(li);
+    });
+  }
+  function openCmd(){ cmd.classList.remove('hidden'); cmd.classList.add('flex'); renderCmd(); cmdInput.value=''; setTimeout(()=>cmdInput.focus(),30); }
+  function closeCmd(){ cmd.classList.add('hidden'); cmd.classList.remove('flex'); }
+  document.getElementById('cmd-open')?.addEventListener('click', openCmd);
+  document.getElementById('cmd-backdrop')?.addEventListener('click', closeCmd);
+  cmdInput?.addEventListener('input', e => renderCmd(e.target.value));
+  addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); cmd.classList.contains('hidden') ? openCmd() : closeCmd(); }
+    if (e.key === 'Escape') closeCmd();
+    if (e.key === 'Enter' && !cmd.classList.contains('hidden')){ cmdList.querySelector('button')?.click(); }
+  });
+})();
+</script>
+</body>
+</html>
