@@ -8,6 +8,7 @@
   --surface-2:#F6F5F2;   /* chips / insets         */
   --ink:#141414;         /* main text              */
   --muted:#9B9B97;       /* secondary text         */
+  --ter:#2e2e2e;       /* secondary text         */
   --hairline:#E8E7E3;    /* borders                */
   --accent:#FF5A1F;      /* the orange accent      */
   --accent-soft:#FFEDE4; /* soft accent background */
@@ -99,12 +100,27 @@ body{
 }
 
 .abt {
-  margin-top: 1em;
+  margin-top: 4em;
   margin-bottom: 2em;
   margin-left: 0;
   margin-right: 0;
   font-weight: 500;
   max-width:60%;
   color:#2e2e2e;
+  animation-delay:1s
+}
+
+.tcase {
+  font-size: 24px;
+  font-weight: Bold;
+  max-width:60%;
+  color:var(--ink);
+  animation-delay:1s
+}
+.tcase2 {
+  font-size: 16px;
+  font-weight: bold;
+  max-width:60%;
+  color:var(--ter);
   animation-delay:1s
 }

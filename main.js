@@ -57,11 +57,11 @@
 
   /* How I work — step tabs.  EDIT the wording here. */
   const steps = [
-    ['01 Discovery Call', "First we have a discovery call to align on your goals, users, and constraints. This sets a shared vision and the foundation for a focused, successful collaboration."],
-    ['02 Research & Strategy', "I dig into users, competitors, and the problem space, then turn findings into a clear strategy — what we build, for whom, and why it matters."],
-    ['03 Wireframe & Prototype', "Low-fidelity flows first, then interactive prototypes. We test the structure of ideas before investing in pixels."],
-    ['04 Design & Test', "High-fidelity interface design backed by a system, validated with real users so decisions are evidence-led, not opinion-led."],
-    ['05 Launch & Iterate', "Ship, measure, and refine. I partner with engineering through launch and keep improving against real-world data."],
+    ['01 Discover', "Every great product starts with understanding. I align with stakeholders, uncover user needs, define business goals, and identify the problems worth solving."],
+    ['02 Research & Define', "I explore user behavior, analyze competitors, and map user journeys to uncover insights that shape a clear product strategy and design direction."],
+    ['03 Ideate & Prototype', "I translate ideas into wireframes and interactive prototypes, validating concepts early to reduce risk and improve usability before development begins."],
+    ['04 Design & Validate', "I craft polished, scalable interfaces backed by design systems and refine them through user feedback and iterative testing to ensure every interaction feels intuitive."],
+    ['05 Launch & Improve', "Design doesn't end at handoff. I collaborate closely with engineers during implementation, measure product performance, and continuously iterate based on real user insights."],
   ];
   const titleEl = document.querySelector('[data-step-title]');
   const bodyEl = document.querySelector('[data-step-body]');
