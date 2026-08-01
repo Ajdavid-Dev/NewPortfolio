@@ -21,7 +21,7 @@ html.dark{
   --bg:#0D0D0C; --surface:#17171A; --surface-2:#121214;
   --ink:#F2F2F0; --muted:#8B8B89; --hairline:#28282C;
   --accent:#FF6B33; --accent-soft:#2A1B12;
-  --btn-bg:#FFFFFF; --btn-fg:#141414;
+  --btn-bg:#FFFFFF; --btn-fg:#141414; --ter:#a0a0a0;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -20px rgba(0,0,0,.7);
   --shadow-lift:0 2px 4px rgba(0,0,0,.5), 0 30px 60px -22px rgba(0,0,0,.8);
 }
@@ -106,7 +106,7 @@ body{
   margin-right: 0;
   font-weight: 500;
   max-width:60%;
-  color:#2e2e2e;
+  color:var(--ter);
   animation-delay:1s
 }
 

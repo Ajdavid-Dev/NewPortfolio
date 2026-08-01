@@ -11,10 +11,10 @@
 window.PROJECTS = {
 
   owiwi: {
-    title: "Owiwi — lending, reimagined",
-    category: "Fintech", role: "Lead Product Designer", year: "2024",
-    timeline: "6 months", team: "PM, 2 engineers, me", platform: "iOS · Android · Web",
-    cover: "", coverClass: "ph1",                 // e.g. cover: "owiwi-cover.jpg"
+    title: "Owiwi - Own your time, feel at ease",
+    category: "Booking Servies", role: "Lead Product Designer", year: "2023",
+    timeline: "6 months", team: "PM, 2 engineers, me", platform: "iOS · Android",
+    cover: "owiwicvr.jpg", coverClass: "ph1",                 // e.g. cover: "owiwi-cover.jpg"
     summary: "A consumer lending app where trust was the whole product. I rebuilt onboarding and the loan flow from the ground up so first-time borrowers always knew what was happening and why.",
     challenge: "Users abandoned the loan application halfway through. The flow asked for too much, too early, explained too little, and felt risky at the exact moment people needed reassurance about their money.",
     approach: [
@@ -28,8 +28,8 @@ window.PROJECTS = {
     next: "agrichain"
   },
 
-  agrichain: {
-    title: "Agrichain — farm to ledger",
+  thina: {
+    title: "Thina - Your Recovery Companion",
     category: "Supply chain", role: "Product Designer", year: "2023",
     timeline: "8 months", team: "PM, design partner, 3 engineers", platform: "Android · Web",
     cover: "", coverClass: "ph2",
@@ -46,8 +46,26 @@ window.PROJECTS = {
     next: "arc"
   },
 
-  arc: {
-    title: "Arc — a design system at scale",
+  dot: {
+    title: "DotFood - Food Ordering, Simplified",
+    category: "Supply chain", role: "Product Designer", year: "2023",
+    timeline: "8 months", team: "PM, design partner, 3 engineers", platform: "Android · Web",
+    cover: "", coverClass: "ph2",
+    summary: "A traceability platform connecting smallholder farmers to buyers, built for low-bandwidth devices and people using a digital tool for the very first time.",
+    challenge: "The people who needed the product most had the least reliable connectivity and the least familiarity with apps. Every interaction had to survive a dropped connection and be obvious without instructions.",
+    approach: [
+      "Designed offline-first flows that sync when a connection returns.",
+      "Used large touch targets, icons, and local-language labels for first-time users.",
+      "Simplified complex supply-chain data into a few glanceable cards.",
+      "Tested in the field, not just the studio, and iterated on what actually broke."
+    ],
+    gallery: ["", ""], galleryClass: ["ph1","ph3"],
+    outcomes: [ {v:"12k+", l:"Farmers onboarded"}, {v:"+60%", l:"Records logged"}, {v:"3 regions", l:"Rolled out"} ],
+    next: "arc"
+  },
+
+  boku: {
+    title: "Boku - Where Events Come Together",
     category: "SaaS", role: "Design Systems Lead", year: "2022",
     timeline: "Ongoing", team: "Design + frontend guild", platform: "Web",
     cover: "", coverClass: "ph3",
