@@ -40,19 +40,27 @@
 
   out.innerHTML = `
     <section class="pt-10 sm:pt-14 reveal in">
-      <div class="flex flex-wrap gap-x-3 gap-y-1 label mb-4">
+      <div class="label flex flex-wrap gap-x-3 gap-y-1 label mb-4">
         <span>${esc(p.category)}</span><span>·</span><span>${esc(p.role)}</span><span>·</span><span>${esc(p.year)}</span>
       </div>
       <h1 class="font-bold tracking-tight leading-[1.05] text-[clamp(2rem,5vw,3.4rem)]">${esc(p.title)}</h1>
-      <p class="mt-5 text-lg leading-relaxed text-[color:var(--muted)] max-w-2xl">${esc(p.summary)}</p>
+      <p class="base1 ">${esc(p.base)}</p>
+      <p class="summary1 ">${esc(p.summary)}</p>
     </section>
 
     <div class="mt-9 reveal">${mediaBlock(p.cover, p.coverClass, p.coverClass + ' · cover image', '16/9')}</div>
-
+    
+${p.live ? `<div class="mt-6 reveal">
+      <a href="${esc(p.live)}" target="_blank" rel="noopener noreferrer"
+         class="btn btn-dark inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold">
+        ${esc(p.liveLabel || 'Product preview')} <span aria-hidden="true">↗</span>
+      </a>
+    </div>` : ''}
+    
     <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-5 reveal">
       <div class="card p-5"><p class="label mb-1">Role</p><p class="font-semibold text-sm">${esc(p.role)}</p></div>
       <div class="card p-5"><p class="label mb-1">Timeline</p><p class="font-semibold text-sm">${esc(p.timeline)}</p></div>
-      <div class="card p-5"><p class="label mb-1">Team</p><p class="font-semibold text-sm">${esc(p.team)}</p></div>
+       <div class="card p-5"><p class="label mb-1">Focus</p><p class="font-semibold text-sm">${esc(p.focus)}</p></div>
       <div class="card p-5"><p class="label mb-1">Platform</p><p class="font-semibold text-sm">${esc(p.platform)}</p></div>
     </section>
 
@@ -72,12 +80,12 @@
       ${p.gallery.map((g,i)=>mediaBlock(g, p.galleryClass[i]||'ph1', (p.galleryClass[i]||'ph1') + ' · detail', '4/3')).join('')}
     </section>
 
-    <section class="mt-14 sm:mt-20 reveal">
+    <!-- <section class="mt-14 sm:mt-20 reveal">
       <h2 class="font-bold text-2xl tracking-tight mb-6">Outcome</h2>
       <div class="grid grid-cols-3 gap-4 sm:gap-5">
         ${p.outcomes.map(o=>`<div class="card p-6"><div class="font-bold text-3xl sm:text-4xl tracking-tight">${esc(o.v)}</div><p class="label mt-1.5">${esc(o.l)}</p></div>`).join('')}
       </div>
-    </section>
+    </section>-->
 
     <section class="mt-16 sm:mt-24 card p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal" style="background:var(--accent)">
       <div>

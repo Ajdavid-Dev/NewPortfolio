@@ -11,19 +11,23 @@
 window.PROJECTS = {
 
   owiwi: {
-    title: "Owiwi - Own your time, feel at ease",
-    category: "Booking Servies", role: "Lead Product Designer", year: "2023",
-    timeline: "6 months", team: "PM, 2 engineers, me", platform: "iOS · Android",
-    cover: "owiwicvr.jpg", coverClass: "ph1",                 // e.g. cover: "owiwi-cover.jpg"
-    summary: "A consumer lending app where trust was the whole product. I rebuilt onboarding and the loan flow from the ground up so first-time borrowers always knew what was happening and why.",
-    challenge: "Users abandoned the loan application halfway through. The flow asked for too much, too early, explained too little, and felt risky at the exact moment people needed reassurance about their money.",
+    title: "Owiwi",
+    category: "Booking Servies", role: "Product Designer", year: "2023",
+    live: "https://www.figma.com/proto/9Rp4P068NB9L9kLYBbbVsI/Owiwi-MVP?node-id=6362-7218&viewport=284%2C-8%2C0.34&t=BEUJCSB6u1XWQDwg-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=7997%3A8360&page-id=6362%3A2",        // ← full URL, or "" / omit to hide
+    liveLabel: "Product preview",              // ← optional, defaults below
+    timeline: "6 months", focus: "UX design, user flows, interface design, and design system.", platform: "iOS · Android",
+    cover: "img/owiwimain.png", coverClass: "ph1",                 // e.g. cover: "owiwi-cover.jpg"
+    base: " Owiwi is a service discovery and booking platform designed to make finding and scheduling trusted services easier. The platform helps clients discover and book service providers based on their needs, location, availability, and trust signals, while giving independent specialists and service-based businesses the tools to manage appointments, availability, customers, and growth. As the product is designed to scale across different service categories, the challenge was not simply to design a booking app, but to create a flexible ecosystem that works for someone looking for a trusted provider, a specialist managing their own schedule, and a business coordinating multiple staff and bookings.",
+    
+    summary: "Owiwi is a service discovery and booking platform designed to make finding and scheduling trusted services easier. The platform helps clients discover and book service providers based on their needs, location, availability, and trust signals, while giving independent specialists and service-based businesses the tools to manage appointments, availability, customers, and growth. As the product is designed to scale across different service categories, the challenge was not simply to design a booking app, but to create a flexible ecosystem that works for someone looking for a trusted provider, a specialist managing their own schedule, and a business coordinating multiple staff and bookings.",
+    challenge: "The challenge was to make it easy to find and trust service providers, especially in unfamiliar locations, while creating a simple experience for clients, specialists, and businesses.",
     approach: [
       "Mapped the full borrower journey and ran interviews to find the moments of doubt.",
       "Cut the application into smaller, explained steps with clear progress and plain language.",
       "Designed a reusable component system so every screen felt consistent and calm.",
       "Prototyped and tested two onboarding directions with real users before building."
     ],
-    gallery: ["", ""], galleryClass: ["ph2","ph3"],   // e.g. ["owiwi-1.jpg","owiwi-2.jpg"]
+    gallery: ["", "", ""], galleryClass: ["ph2","ph3"],   // e.g. ["owiwi-1.jpg","owiwi-2.jpg"]
     outcomes: [ {v:"+38%", l:"Application completion"}, {v:"-45%", l:"Drop-off rate"}, {v:"4.7★", l:"App store rating"} ],
     next: "agrichain"
   },

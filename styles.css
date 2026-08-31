@@ -119,8 +119,33 @@ body{
 }
 .tcase2 {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   max-width:60%;
+  color:var(--ter);
+  animation-delay:1s
+}
+
+
+
+.label1 {
+  font-size: 14px;
+  font-weight: 600;
+  max-width:100%;
+  color:var(--muted);
+  animation-delay:1s
+}
+.base1 {
+  font-size: 20px;
+  font-weight: 600;
+  max-width:100%;
+  color:var(--ink);
+  animation-delay:1s
+}
+.summary1 {
+  Margin-top: .5em; 
+  font-size: 19px;
+  font-weight: 400;
+  max-width:90%;
   color:var(--ter);
   animation-delay:1s
 }
